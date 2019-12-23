@@ -1,2 +1,86 @@
 /* You can add global styles to this file, and also import other style files */
 
+// @import '~@swimlane/ngx-datatable/index.css';
+// @import '~@swimlane/ngx-datatable/themes/material.scss';
+// @import '~@swimlane/ngx-datatable/assets/icons.css';
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+app-root {
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  flex-grow: 1;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+router-outlet + * {
+  display: flex !important;
+  flex-grow: 1 !important;
+
+  margin: 12px 24px 0px 24px;
+}
+
+.custom-button {
+  width: 110px;
+  height: 39px;
+  border-radius: 18px !important;
+  color: black;
+  position: relative;
+  padding-right: 0px !important;
+  padding-left: 36px !important;
+  text-align: center;
+  color: white;
+
+  .custom-icon {
+    top: 3px;
+    left: 3px;
+    position: absolute;
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background-color: white;
+
+    .position-icon {
+      margin-top: 5px;
+      color: red;
+    }
+  }
+}
+
+
+
+.ngx-datatable.scroll-vertical .datatable-body {
+  overflow-y: auto;
+  background-color: #e9f5ef;
+}
+
+
+.ngx-datatable.fixed-header
+.datatable-header
+.datatable-header-inner
+.datatable-header-cell {
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+background-color: blue;
+font-size: medium;
+color: black;
+text-align: center;
+padding-top: 10px !important;
+border-left: solid 1px;
+}
+
+
+.ngx-datatable .datatable-header {
+  background-color: blue;
+}

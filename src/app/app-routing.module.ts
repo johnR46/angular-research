@@ -7,10 +7,29 @@ const routes: Routes = [
     data: {
       title: 'Demo eager'
     },
-    loadChildren: () => import('./demo-eager/demo-eager.module')
+    loadChildren: () =>
+      import('./demo-eager/demo-eager.module').then(m => m.DemoEagerModule)
+  },
+  {
+    path: 'demo-eager',
+    outlet: 'demo-eager',
+    data: {
+      title: 'Demo eager'
+    },
+    loadChildren: () =>
+      import('./demo-eager/demo-eager.module').then(m => m.DemoEagerModule)
   },
   {
     path: 'hello-feat',
+    data: {
+      title: 'Hello Feat'
+    },
+    loadChildren: () =>
+      import('./hello-feat/hello-feat.module').then(m => m.HelloFeatModule)
+  },
+  {
+    path: 'hello-feat',
+    outlet: 'hello-feat',
     data: {
       title: 'Hello Feat'
     },
@@ -26,6 +45,39 @@ const routes: Routes = [
       import('./demo-instance-srv/demo-instance-srv.module').then(
         m => m.DemoInstanceSrvModule
       )
+  },
+  {
+    path: 'demo-service',
+    data: {
+      title: 'Demo-Service'
+    },
+    outlet: 'demo-service',
+    loadChildren: () =>
+      import('./demo-instance-srv/demo-instance-srv.module').then(
+        m => m.DemoInstanceSrvModule
+      )
+  },
+
+  {
+    path: 'hello-mat',
+    data: {
+      title: 'hello-mat'
+    },
+    loadChildren: () =>
+      import('./hello-mat/hello-mat.module').then(m => m.HelloMatModule)
+  },
+  {
+    path: 'hello-mat',
+    data: {
+      title: 'hello-mat'
+    },
+    outlet: 'hello-mat',
+    loadChildren: () =>
+      import('./hello-mat/hello-mat.module').then(m => m.HelloMatModule)
+  },
+  {
+    path: '**',
+    redirectTo: 'hello-mat'
   }
 ];
 

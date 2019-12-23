@@ -1,1 +1,78 @@
-<p>ma-form-item-table works!</p>
+<div fxLayout="column" fxFlex>
+  <div fxLayout="row" fxFlex>
+    <ngx-datatable
+      style="width: 900px; height: 232px;"
+      class="material"
+      [rows]="maintenanceItems"
+      [columnMode]="'force'"
+      [headerHeight]="32"
+      [rowHeight]="30"
+      [footerHeight]="0"
+      [scrollbarV]="true"
+      [messages]="{ emptyMessage: '' }"
+      [selectionType]="'single'"
+    >
+      <ngx-datatable-column
+        name=""
+        [headerClass]="'w-index'"
+        [cellClass]="'w-index text-center'"
+        [resizeable]="false"
+        [draggable]="false"
+        [sortable]="false"
+      >
+        <ng-template let-index="rowIndex" ngx-datatable-cell-template>
+          {{ index + 1 }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        name="ชื่อไอเท็ม"
+        [headerClass]="'w-30-p'"
+        [cellClass]="'w-30-p'"
+        [resizeable]="false"
+        [draggable]="false"
+        [sortable]="false"
+      >
+        <ng-template let-item="row" ngx-datatable-cell-template>
+          {{ item?.itemName }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        name="จำนวน"
+        [headerClass]="'w-10-p'"
+        [cellClass]="'w-10-p text-left'"
+        [resizeable]="false"
+        [draggable]="false"
+        [sortable]="false"
+      >
+        <ng-template let-item="row" ngx-datatable-cell-template>
+          {{ item?.qty }}
+        </ng-template>
+      </ngx-datatable-column>
+
+      <ngx-datatable-column
+        name=""
+        style="text-align: center;"
+        [resizeable]="false"
+        [draggable]="false"
+        [sortable]="false"
+      >
+        <ng-template let-item="row" ngx-datatable-cell-template>
+          <button
+            type="button"
+            mat-icon-button
+            color="primary"
+            (click)="update.emit(item)"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
+  </div>
+
+  <div style="margin-top: 12px ;">
+    รวมทั้งสิ้น {{ maintenanceItems?.length }} รายการ
+  </div>
+</div>

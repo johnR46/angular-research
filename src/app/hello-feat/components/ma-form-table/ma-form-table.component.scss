@@ -1,0 +1,78 @@
+app-ma-form-table {
+
+
+  table:hover {
+    background-color: rgb(118, 216, 248);
+  }
+
+  .w-no {
+    min-width: 70px !important;
+    width: 70px !important;
+    max-width: 70px !important;
+    text-align: left;
+  }
+
+  .w-code {
+    min-width: calc(20%) !important;
+    width: calc(20%) !important;
+    max-width: calc(20%) !important;
+    text-align: center;
+  }
+  .w-date {
+    min-width: calc(10%) !important;
+    width: calc(10%) !important;
+    max-width: calc(10%) !important;
+    text-align: center;
+  }
+
+  .w-detail {
+    min-width: calc(36%) !important;
+    width: calc(36%) !important;
+    max-width: calc(36%) !important;
+  }
+
+  .w-qty {
+    min-width: calc(10%) !important;
+    width: calc(10%) !important;
+    max-width: calc(10%) !important;
+    text-align: right;
+  }
+
+  .w-type {
+    min-width: calc(10%) !important;
+    width: calc(10%) !important;
+    max-width: calc(10%) !important;
+    text-align: right;
+  }
+
+  .w-actions {
+    min-width: calc(10%) !important;
+    width: calc(10%) !important;
+    max-width: calc(10%) !important;
+    text-align: center;
+  }
+}
+
+.custom-button-action {
+  width: 30px !important;
+  height: 30px !important;
+  position: relative;
+  border-radius: 15px;
+  border: none;
+  margin-left: 3px;
+
+  color: #03a9f4 !important;
+
+  //  inline-size: max-content;
+  .custom-ngx-icon-search {
+    top: 5px;
+    left: 5px;
+    position: absolute;
+  }
+
+  .custom-ngx-icon-edit {
+    top: 4px;
+    left: 4px;
+    position: absolute;
+  }
+}

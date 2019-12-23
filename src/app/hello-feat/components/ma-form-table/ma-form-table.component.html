@@ -1,1 +1,78 @@
-<p>ma-form-table works!</p>
+<div fxLayout="column" fxFlex style="margin-top: 12px;">
+  <ngx-datatable
+    fxFlex
+    [selectionType]="'single'"
+    class="material"
+    [rows]="results"
+    [columnMode]="'force'"
+    [headerHeight]="35"
+    [columns]="columns"
+    [rowHeight]="0"
+    [scrollbarV]="true"
+    [messages]="{ emptyMessage: '' }"
+    appExpandAllRows
+  >
+    <ngx-datatable-row-detail [rowHeight]="getRowHeight">
+      <ng-template ngx-datatable-row-detail-template let-row="row">
+        <table>
+          <tr>
+            <td *ngFor="let c of columns" [ngClass]="c.cellClass || ''"></td>
+          </tr>
+          <tr>
+            <td class="w-no">{{ 1 }}</td>
+            <td class="w-code">{{ row.code }}</td>
+            <td class="w-date">{{ row.createdDate | dateTime }}</td>
+            <td class="w-detail"></td>
+            <td colspan="1"></td>
+            <td class="w-type">{{ row.maType | maType }}</td>
+            <td>
+              <div
+                fxLayout="row"
+                fxFlex
+                fxLayoutAlign="center center"
+                fxLayoutGap="12px"
+              >
+                <button
+                  mat-icon-button
+                  class="custom-button-action"
+                  color="primary"
+                  (click)="view.emit(row)"
+                >
+                  <div class="custom-ngx-icon-search">
+                    <mat-icon>search</mat-icon>
+                  </div>
+                </button>
+
+                <button
+                  class="custom-button-action"
+                  mat-icon-button
+                  color="primary"
+                  (click)="update.emit(row)"
+                >
+                  <div class="custom-ngx-icon-edit">
+                    <mat-icon>edit</mat-icon>
+                  </div>
+                </button>
+              </div>
+            </td>
+          </tr>
+
+          <tr *ngFor="let item of row.maintenanceItems; let i = index">
+            <td colspan="3"></td>
+            <td>{{ item.itemName }}</td>
+            <td style="text-align: center;">{{ item.qty }}</td>
+            <td colspan="3"></td>
+          </tr>
+
+          <tr>
+            <td colspan="3"></td>
+            <td>จำนวน {{ row?.maintenanceItems?.length }} รายการ</td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </ng-template>
+    </ngx-datatable-row-detail>
+  </ngx-datatable>
+</div>

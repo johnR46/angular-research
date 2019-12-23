@@ -1,0 +1,31 @@
+<mat-toolbar mat-dialog-title>
+  <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
+    <span> hello Dialog </span>
+
+    <button
+      mat-button
+      class="mat-icon-button"
+      aria-label="Close dialog"
+      (click)="onClose()"
+      tabindex="-1"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<div mat-dialog-content style="height: 85vh; max-height: 85vh;">
+  <ng-container [ngSwitch]="data.outlet">
+    <!-- feat one  -->
+    <router-outlet
+      *ngSwitchCase="'hello-feat'"
+      name="hello-feat"
+    ></router-outlet>
+
+    <!-- feat two  -->
+    <router-outlet
+      *ngSwitchCase="'demo-service'"
+      name="demo-service"
+    ></router-outlet>
+  </ng-container>
+</div>

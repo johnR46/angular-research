@@ -1,1 +1,79 @@
-<p>ma-form-search works!</p>
+<div fxLayout="column" fxFlexFill>
+  <form [formGroup]="formSearch">
+    <div fxLayout="row" fxLayoutGap="12px" fxFlex>
+      <div fxLayout="column" style="width: 33%;">
+        <div fxLayout="row" fxLayoutGap="12px" >
+          <mat-form-field style="width: 50%;" >
+            <input
+              matInput
+              [max]="formSearch.get('endTransDate').value"
+              [matDatepicker]="picker"
+              placeholder="วันที่ทำรายการเริ่มต้น"
+              formControlName="startTransDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker [disabled]="false"></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field style="width: 50%;">
+            <input
+              matInput
+              [min]="formSearch.get('startTransDate').value"
+              [max]="today"
+              [matDatepicker]="picker2"
+              placeholder="วันที่ทำรายการสิ้นสุด"
+              formControlName="endTransDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="picker2"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #picker2 [disabled]="false"></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div fxLayout="column" style="width: 33%;">
+        <mat-form-field>
+          <input matInput formControlName="code" placeholder="รหัสไอเท็ม" />
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" style="width: 33%;">
+        <mat-form-field>
+          <input matInput formControlName="itemName" placeholder="ชื่อไอเท็ม" />
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+
+  <div fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="end center">
+    <button
+      mat-raised-button
+      style="background-color:deepskyblue"
+      class="custom-button"
+      (click)="toSearch()"
+    >
+      ค้นหา
+      <div class="custom-icon">
+        <mat-icon class="position-icon" style="color: deepskyblue">
+          search
+        </mat-icon>
+      </div>
+    </button>
+
+    <button
+      mat-raised-button
+      style="background-color: gray"
+      class="custom-button"
+      (click)="toClear()"
+    >
+      รีเซ็ต
+      <div class="custom-icon">
+        <mat-icon class="position-icon" style="color: gray"> close </mat-icon>
+      </div>
+    </button>
+  </div>
+</div>

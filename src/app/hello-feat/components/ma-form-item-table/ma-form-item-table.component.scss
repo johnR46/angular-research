@@ -1,0 +1,14 @@
+app-ma-form-item-table {
+
+
+  .ngx-datatable.fixed-row
+    .datatable-scroll
+    .datatable-body-row
+    .datatable-body-cell,
+  .ngx-datatable.fixed-row
+    .datatable-scroll
+    .datatable-body-row
+    .datatable-body-group-cell {
+    text-align: center;
+  }
+}

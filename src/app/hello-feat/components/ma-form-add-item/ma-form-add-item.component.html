@@ -1,1 +1,31 @@
-<p>ma-form-add-item works!</p>
+<div fxLayout="column" fxFlex>
+  <form [formGroup]="itemForm">
+    <div fxLayout="row" fxLayoutGap="12px">
+      <mat-form-field>
+        <input
+          matInput
+          formControlName="itemName"
+          appMaCode
+          placeholder="ชื่อ item"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput formControlName="qty" placeholder="ราคา" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-placeholder>sparepart * </mat-placeholder>
+      <mat-select formControlName="sparepart">
+        <mat-option *ngFor="let sp of spareparts" [value]="sp">
+          {{ sp.nameEn }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+
+  <!-- <pre>
+  {{this.itemForm.getRawValue() | json}}
+</pre> -->
+</div>

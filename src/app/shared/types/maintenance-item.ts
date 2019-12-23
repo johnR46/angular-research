@@ -1,4 +1,4 @@
-import { Sparepart } from "./sparepart";
+import { Sparepart } from './sparepart';
 
 export interface MaintenanceItem {
   id: number;

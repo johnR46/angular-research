@@ -1,1 +1,30 @@
-<p>ma-form works!</p>
+<div fxLayout="column" fxFlexFill fxLayoutGap="24px">
+  <form [formGroup]="maForm" fxLayout="row">
+    <mat-radio-group formControlName="maType">
+      <label>ประเภท : </label>
+      <mat-radio-button value="F">
+        ซ่อม
+      </mat-radio-button>
+      <mat-radio-button value="C" style="margin-left: 4px;">
+        เคลม
+      </mat-radio-button>
+    </mat-radio-group>
+  </form>
+
+  <button
+    mat-raised-button
+    style="background-color: #5ccbf3;width: 140px;"
+    class="custom-button"
+    (click)="gotoAddItemPage()"
+  >
+    เพิ่มรายการของ
+    <div class="custom-icon">
+      <mat-icon class="position-icon" style="color: #5ccbf3">add</mat-icon>
+    </div>
+  </button>
+
+  <app-ma-form-item-table
+    [MaForm]="maForm"
+    (update)="onUpdateItem($event)"
+  ></app-ma-form-item-table>
+</div>
