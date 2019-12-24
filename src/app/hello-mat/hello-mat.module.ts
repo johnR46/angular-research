@@ -16,9 +16,10 @@ import {
 
 import { HelloMatFormPageComponent } from './containers/hello-mat-form-page.component';
 import { HelloMatRoutingModule } from './hello-mat-routing.module';
+import { AddAddressComponent } from './components/add-address.component';
 
 @NgModule({
-  declarations: [HelloMatFormPageComponent],
+  declarations: [HelloMatFormPageComponent, AddAddressComponent],
   imports: [
     CommonModule,
     HelloMatRoutingModule,

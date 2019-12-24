@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
-import { HelloDialogService } from 'src/app/hello-dialog/service/hello-dialog.service';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-hello-mat-form-page',
@@ -23,37 +22,11 @@ import { HelloDialogService } from 'src/app/hello-dialog/service/hello-dialog.se
               </button>
             </div>
 
-            <div
-              formArrayName="address"
-              *ngFor="let adddr of address.controls; let i = index"
-              style="border:solid 1px green"
-            >
-              <div [formGroupName]="i" fxLayoutGap="12px">
-                <mat-form-field>
-                  <input
-                    matInput
-                    formControlName="address"
-                    placeholder="address name"
-                    required
-                  />
-                  <mat-error *ngIf="address.at(i).invalid">กรุณาระบุ</mat-error>
-                </mat-form-field>
-                <mat-form-field>
-                  <input
-                    matInput
-                    formControlName="postCode"
-                    placeholder="postCode"
-                  />
-                </mat-form-field>
-                <button
-                  mat-raised-button
-                  color="warn"
-                  (click)="deleteAddress(i)"
-                >
-                  delete
-                </button>
-              </div>
-            </div>
+            <app-add-address
+              [employeeForm]="employeeForm"
+              [address]="this.address"
+              (removeAt)="deleteAddress($event)"
+            ></app-add-address>
 
             <div style="margin-top:24px">
               <button mat-raised-button color="primary" (click)="save()">
@@ -61,8 +34,6 @@ import { HelloDialogService } from 'src/app/hello-dialog/service/hello-dialog.se
               </button>
             </div>
           </form>
-
-          <div></div>
         </div>
 
         <div fxLayout="column" fxFlex>
@@ -76,18 +47,11 @@ import { HelloDialogService } from 'src/app/hello-dialog/service/hello-dialog.se
 export class HelloMatFormPageComponent implements OnInit {
   employeeForm: FormGroup;
   addressForm: FormGroup;
-  constructor(
-    private fb: FormBuilder,
-    private helloDialogService: HelloDialogService
-  ) {
+  constructor(private fb: FormBuilder) {
     this.employeeForm = this.buildEmpForm();
   }
 
-  ngOnInit() {
-    let emp = [{ add: 'a' }];
-
-    console.log(emp);
-  }
+  ngOnInit() {}
 
   save(): void {
     this.employeeForm.markAllAsTouched();
@@ -97,14 +61,17 @@ export class HelloMatFormPageComponent implements OnInit {
     console.log(this.employeeForm.getRawValue());
   }
 
-  showControl(val): void {
-    console.log(val);
-  }
-
   private buildEmpForm(): FormGroup {
     return this.fb.group({
       name: undefined,
       address: this.fb.array([this.buildAddressForm()])
+    });
+  }
+
+  private buildAddressForm(): FormGroup {
+    return this.fb.group({
+      address: [undefined, Validators.required],
+      postCode: ['ggg']
     });
   }
 
@@ -113,20 +80,15 @@ export class HelloMatFormPageComponent implements OnInit {
   }
 
   deleteAddress(val: number): void {
-    // console.log(this.address.at(val).valid);
+    console.log(this.address.length);
 
-    this.address.removeAt(val);
+    if (this.address.length === 1) {
+      alert('อย่างน้อยต้องมี 1 อัน');
+    } else {
+      this.address.removeAt(val);
+    }
   }
-
   addAddress(): void {
     this.address.push(this.buildAddressForm());
-    // this.address.insert(0, this.buildAddressForm());
-  }
-
-  private buildAddressForm(): FormGroup {
-    return this.fb.group({
-      address: [undefined, Validators.required],
-      postCode: ['ggg']
-    });
   }
 }
