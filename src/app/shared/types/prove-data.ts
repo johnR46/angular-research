@@ -1,16 +1,17 @@
-export interface MasterData {
+export interface Corporation {
   code: string;
-  createdDate: Date;
-  seconData: SeconData;
-}
-
-export interface SeconData {
   name: string;
-  tridData: TridData[];
+  createdDate: Date;
+  departments: Department[];
 }
 
-export interface TridData {
-  tridName: string;
-  type: string;
+export interface Department {
+  name: string;
+  employees: Employee[];
+}
+
+export interface Employee {
+  name: string;
   status: boolean;
+  type: string;
 }

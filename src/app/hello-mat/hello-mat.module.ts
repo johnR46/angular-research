@@ -1,22 +1,21 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { HelloMatRoutingModule } from './hello-mat-routing.module';
-import { HelloMatFormPageComponent } from './containers/hello-mat-form-page.component';
+import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
-  MatInputModule,
-  MatCheckboxModule,
-  MatRadioModule,
-  MatSelectModule,
   MatButtonModule,
-  MatTabsModule,
+  MatCheckboxModule,
+  MatDatepickerModule,
   MatDialogModule,
   MatIconModule,
-  MatDatepickerModule,
-  MatNativeDateModule
+  MatInputModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatTabsModule
 } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
+
+import { HelloMatFormPageComponent } from './containers/hello-mat-form-page.component';
+import { HelloMatRoutingModule } from './hello-mat-routing.module';
 
 @NgModule({
   declarations: [HelloMatFormPageComponent],
@@ -33,10 +32,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatDatepickerModule,
-    MatNativeDateModule
+    MatDatepickerModule
   ],
-  exports: [],
-  providers: [MatDatepickerModule]
+  exports: []
 })
 export class HelloMatModule {}

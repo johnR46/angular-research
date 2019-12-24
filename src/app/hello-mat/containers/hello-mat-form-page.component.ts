@@ -1,59 +1,132 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, Validators } from '@angular/forms';
+import { HelloDialogService } from 'src/app/hello-dialog/service/hello-dialog.service';
 
 @Component({
   selector: 'app-hello-mat-form-page',
   template: `
-    <div fxLayout="column" fxFlexFill style="background-color:red">
-      <div fxLayout="row" fxFlex style="background-color:green">
+    <div fxLayout="column" fxFlexFill>
+      <div fxLayout="row" fxFlex>
         <div fxLayout="column" fxFlex>
-          <form [formGroup]="tridForm" fxFlex="row" fxLayoutGap="12px">
+          <form [formGroup]="employeeForm">
             <mat-form-field>
               <input
                 matInput
-                formControlName="tridName"
-                placeholder="tridnme"
+                formControlName="name"
+                placeholder="empolyee name"
               />
             </mat-form-field>
 
-            <mat-form-field>
-              <input
-                matInput
-                formControlName="tridName"
-                placeholder="tridnme"
-              />
-            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="end">
+              <button mat-raised-button color="primary" (click)="addAddress()">
+                add
+              </button>
+            </div>
+
+            <div
+              formArrayName="address"
+              *ngFor="let adddr of address.controls; let i = index"
+              style="border:solid 1px green"
+            >
+              <div [formGroupName]="i" fxLayoutGap="12px">
+                <mat-form-field>
+                  <input
+                    matInput
+                    formControlName="address"
+                    placeholder="address name"
+                    required
+                  />
+                  <mat-error *ngIf="address.at(i).invalid">กรุณาระบุ</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                  <input
+                    matInput
+                    formControlName="postCode"
+                    placeholder="postCode"
+                  />
+                </mat-form-field>
+                <button
+                  mat-raised-button
+                  color="warn"
+                  (click)="deleteAddress(i)"
+                >
+                  delete
+                </button>
+              </div>
+            </div>
+
+            <div style="margin-top:24px">
+              <button mat-raised-button color="primary" (click)="save()">
+                save
+              </button>
+            </div>
           </form>
+
+          <div></div>
+        </div>
+
+        <div fxLayout="column" fxFlex>
+          <pre>{{ this.employeeForm.getRawValue() | json }}</pre>
         </div>
       </div>
-      <div fxLayout="row" fxFlex style="background-color:yellow"></div>
-      <div fxLayout="row" fxFlex style="background-color:white"></div>
     </div>
   `,
   styles: []
 })
 export class HelloMatFormPageComponent implements OnInit {
-  masterForm: FormGroup;
-  Seconform: FormGroup;
-  tridForm: FormGroup;
+  employeeForm: FormGroup;
+  addressForm: FormGroup;
+  constructor(
+    private fb: FormBuilder,
+    private helloDialogService: HelloDialogService
+  ) {
+    this.employeeForm = this.buildEmpForm();
+  }
 
-  constructor(private fb: FormBuilder) {
-    this.masterForm = this.fb.group({
-      code: undefined,
-      createdDate: new Date(),
-      seconData: {}
-    });
+  ngOnInit() {
+    let emp = [{ add: 'a' }];
 
-    this.Seconform = this.fb.group({
+    console.log(emp);
+  }
+
+  save(): void {
+    this.employeeForm.markAllAsTouched();
+    if (this.employeeForm.valid) {
+      alert('ผ่าน');
+    }
+    console.log(this.employeeForm.getRawValue());
+  }
+
+  showControl(val): void {
+    console.log(val);
+  }
+
+  private buildEmpForm(): FormGroup {
+    return this.fb.group({
       name: undefined,
-      tridData: [{}]
-    });
-
-    this.tridForm = this.fb.group({
-      tridName: undefined,
-      type: undefined,
-      status: false
+      address: this.fb.array([this.buildAddressForm()])
     });
   }
-  ngOnInit() {}
+
+  get address(): FormArray {
+    return this.employeeForm.get('address') as FormArray;
+  }
+
+  deleteAddress(val: number): void {
+    // console.log(this.address.at(val).valid);
+
+    this.address.removeAt(val);
+  }
+
+  addAddress(): void {
+    this.address.push(this.buildAddressForm());
+    // this.address.insert(0, this.buildAddressForm());
+  }
+
+  private buildAddressForm(): FormGroup {
+    return this.fb.group({
+      address: [undefined, Validators.required],
+      postCode: ['ggg']
+    });
+  }
 }

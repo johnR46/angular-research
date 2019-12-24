@@ -49,13 +49,13 @@ import { ShareValidatorModule } from '@shared/directives/validator/share-validat
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatNativeDateModule,
+    // MatNativeDateModule,
     MatDatepickerModule,
     NgxDatatableModule,
     NgxDtModule,
     SharePipesModule,
     ShareValidatorModule
   ],
-  providers: [MatDatepickerModule]
+  // providers: [MatDatepickerModule]
 })
 export class HelloFeatModule {}

@@ -10,17 +10,17 @@ import { NativeDateAdapter } from '@angular/material';
 import * as moment from 'moment-timezone';
 
 moment.locale('th');
-moment.tz.setDefault('Asia/Bangkok');
+// moment.tz.setDefault('Asia/Bangkok');
 
 export class AppDateAdapter extends NativeDateAdapter {
   format(date: Date, displayFormat: any): string {
-    const format = moment(date).format('dd');
+    //  const format = moment(date).format('dd');
 
-    const value = moment(format)
+    const value = moment(date)
       .add(543, 'y')
       .format('DD/MM/YYYY');
-    // const thaiDay = moment(date).format('dddd');
+    const thaiDay = moment(date).format('dddd');
 
-    return `${value}`;
+    return `${value}, ${thaiDay}`;
   }
 }

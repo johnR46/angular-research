@@ -8,7 +8,7 @@ import {
 import { AppDateAdapter } from './app.date-adapter';
 
 @NgModule({
-  imports: [MatNativeDateModule]
+   imports: [MatNativeDateModule]
 })
 export class DateAdapterModule {
   static forRoot(): ModuleWithProviders {

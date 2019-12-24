@@ -11,6 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment.prod';
 import { DateAdapterModule } from '@core/date-adapter';
 import { RoutingDialogModule } from '@shared/dialogs/routing-dialog/routing-dialog.module';
+import { HelloDialogModule } from './hello-dialog/hello-dialog.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,14 +26,17 @@ import { RoutingDialogModule } from '@shared/dialogs/routing-dialog/routing-dial
         strictActionImmutability: true
       }
     }),
-    DateAdapterModule.forRoot(),
+     DateAdapterModule.forRoot(),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production
     }),
     // layout
     HttpClientModule,
-    RoutingDialogModule
+    RoutingDialogModule,
+
+    // provider
+    HelloDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

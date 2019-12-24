@@ -10,6 +10,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./demo-eager/demo-eager.module').then(m => m.DemoEagerModule)
   },
+
   {
     path: 'demo-eager',
     outlet: 'demo-eager',
@@ -77,7 +78,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'hello-mat'
+    redirectTo: 'hello-dialog'
   }
 ];
 
