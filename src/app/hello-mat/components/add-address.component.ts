@@ -40,4 +40,6 @@ export class AddAddressComponent {
   deleteAddress(index: number): void {
     this.removeAt.emit(index);
   }
+
+
 }

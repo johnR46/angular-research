@@ -85,7 +85,9 @@ export class HelloMatFormPageComponent implements OnInit {
     return this.fb.group({
       address: [undefined, Validators.required],
       postCode: ['ggg'],
-      status: false
+      status: false,
+      test: true,
+      xxx: false
     });
   }
 
