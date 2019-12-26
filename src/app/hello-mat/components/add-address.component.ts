@@ -23,6 +23,7 @@ import { EventEmitter } from '@angular/core';
           <mat-form-field>
             <input matInput formControlName="postCode" placeholder="postCode" />
           </mat-form-field>
+          <mat-checkbox formControlName="status">ไม่ได้อยู่แล้ว</mat-checkbox>
           <button mat-raised-button color="warn" (click)="deleteAddress(i)">
             delete
           </button>
