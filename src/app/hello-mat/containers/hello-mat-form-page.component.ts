@@ -28,9 +28,12 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
               (removeAt)="deleteAddress($event)"
             ></app-add-address>
 
-            <div style="margin-top:24px">
+            <div style="margin-top:24px" fxLayoutGap="12px">
               <button mat-raised-button color="primary" (click)="save()">
                 save
+              </button>
+              <button mat-raised-button color="primary" (click)="testCase()">
+                test case remove control
               </button>
             </div>
           </form>
@@ -53,6 +56,14 @@ export class HelloMatFormPageComponent implements OnInit {
 
   ngOnInit() {}
 
+  testCase(): void {
+    if (this.address.length <= 1) {
+      this.employeeForm.removeControl('userState');
+    } else {
+      this.employeeForm.removeControl('userName');
+    }
+  }
+
   save(): void {
     this.employeeForm.markAllAsTouched();
     if (this.employeeForm.valid) {
@@ -64,6 +75,8 @@ export class HelloMatFormPageComponent implements OnInit {
   private buildEmpForm(): FormGroup {
     return this.fb.group({
       name: undefined,
+      userState: false,
+      userName: true,
       address: this.fb.array([this.buildAddressForm()])
     });
   }
