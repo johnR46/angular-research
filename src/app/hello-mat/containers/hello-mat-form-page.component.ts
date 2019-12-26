@@ -75,8 +75,8 @@ export class HelloMatFormPageComponent implements OnInit {
   private buildEmpForm(): FormGroup {
     return this.fb.group({
       name: undefined,
-      userState: false,
-      userName: true,
+      userState: [true, Validators.nullValidator],
+      userName: [undefined, Validators.nullValidator],
       address: this.fb.array([this.buildAddressForm()])
     });
   }
