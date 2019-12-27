@@ -87,6 +87,22 @@ const routes: Routes = [
       )
   },
   {
+    path: 'l1',
+    data: {
+      title: 'L1 lazy loard'
+    },
+    loadChildren: () =>
+      import('./hello-lazy-load-instance/l1/l1.module').then(m => m.L1Module)
+  },
+  {
+    path: 'l2',
+    data: {
+      title: 'L2 lazy loard'
+    },
+    loadChildren: () =>
+      import('./hello-lazy-load-instance/l2/l2.module').then(m => m.L2Module)
+  },
+  {
     path: '**',
     redirectTo: 'hello-provider'
   }

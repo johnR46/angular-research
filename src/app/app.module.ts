@@ -13,6 +13,7 @@ import { DateAdapterModule } from '@core/date-adapter';
 import { RoutingDialogModule } from '@shared/dialogs/routing-dialog/routing-dialog.module';
 import { HelloDialogModule } from './hello-dialog/hello-dialog.module';
 import { FcModule } from './prove-eager-instance-module/fc/fc.module';
+import { L1Module } from './hello-lazy-load-instance/l1/l1.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
