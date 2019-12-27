@@ -77,8 +77,18 @@ const routes: Routes = [
       import('./hello-mat/hello-mat.module').then(m => m.HelloMatModule)
   },
   {
+    path: 'hello-provider',
+    data: {
+      title: 'Prove Type of Provider'
+    },
+    loadChildren: () =>
+      import('./hello-provider/hello-provider.module').then(
+        m => m.HelloProviderModule
+      )
+  },
+  {
     path: '**',
-    redirectTo: 'hello-dialog'
+    redirectTo: 'hello-provider'
   }
 ];
 

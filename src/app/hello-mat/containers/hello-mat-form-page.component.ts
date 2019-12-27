@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UserService } from 'src/app/hello-provider/containers/service/user.service';
 
 @Component({
   selector: 'app-hello-mat-form-page',
@@ -41,6 +42,12 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
         <div fxLayout="column" fxFlex>
           <pre>{{ this.employeeForm.getRawValue() | json }}</pre>
+
+          <a
+            [routerLink]="['/hello-provider']"
+            routerLinkActive="router-link-active"
+          >xx
+          </a>
         </div>
       </div>
     </div>
@@ -50,11 +57,13 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class HelloMatFormPageComponent implements OnInit {
   employeeForm: FormGroup;
   addressForm: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private userService: UserService) {
     this.employeeForm = this.buildEmpForm();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.userService.testScope);
+  }
 
   testCase(): void {
     if (this.address.length <= 1) {
@@ -85,9 +94,7 @@ export class HelloMatFormPageComponent implements OnInit {
     return this.fb.group({
       address: [undefined, Validators.required],
       postCode: ['ggg'],
-      status: false,
-      test: true,
-      xxx: false
+      status: false
     });
   }
 

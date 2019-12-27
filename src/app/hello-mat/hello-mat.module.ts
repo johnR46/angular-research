@@ -17,6 +17,7 @@ import {
 import { HelloMatFormPageComponent } from './containers/hello-mat-form-page.component';
 import { HelloMatRoutingModule } from './hello-mat-routing.module';
 import { AddAddressComponent } from './components/add-address.component';
+import { HelloProviderModule } from '../hello-provider/hello-provider.module';
 
 @NgModule({
   declarations: [HelloMatFormPageComponent, AddAddressComponent],
@@ -33,7 +34,7 @@ import { AddAddressComponent } from './components/add-address.component';
     MatDialogModule,
     MatIconModule,
     ReactiveFormsModule,
-    MatDatepickerModule
+    MatDatepickerModule,HelloProviderModule
   ],
   exports: []
 })
