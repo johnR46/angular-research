@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment.prod';
 import { DateAdapterModule } from '@core/date-adapter';
 import { RoutingDialogModule } from '@shared/dialogs/routing-dialog/routing-dialog.module';
 import { HelloDialogModule } from './hello-dialog/hello-dialog.module';
+import { FcModule } from './prove-eager-instance-module/fc/fc.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -36,7 +37,11 @@ import { HelloDialogModule } from './hello-dialog/hello-dialog.module';
     RoutingDialogModule,
 
     // provider
-    HelloDialogModule
+    HelloDialogModule,
+
+
+    // prove-eager-instance-module
+    FcModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
