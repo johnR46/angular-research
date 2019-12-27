@@ -18,6 +18,6 @@ import { UserService } from './containers/service/user.service';
     MatInputModule,
     MatButtonModule
   ],
-  providers: [UserService]
+  providers: []
 })
 export class HelloProviderModule {}

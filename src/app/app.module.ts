@@ -41,7 +41,7 @@ import { FcModule } from './prove-eager-instance-module/fc/fc.module';
 
 
     // prove-eager-instance-module
-    FcModule,
+  //  FcModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

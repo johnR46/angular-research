@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { FcComponent } from './prove-eager-instance-module/fc/fc.component';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -88,12 +87,8 @@ const routes: Routes = [
       )
   },
   {
-    path: '',
-    component: FcComponent
-  },
-  {
     path: '**',
-    redirectTo: ''
+    redirectTo: 'hello-provider'
   }
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user.service';
+import { HelloFeatService } from 'src/app/hello-feat/service/hello-feat.service';
 
 @Component({
   selector: 'app-form-page',
